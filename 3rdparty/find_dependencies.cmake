@@ -970,7 +970,7 @@ list(APPEND Open3D_3RDPARTY_PRIVATE_TARGETS_FROM_CUSTOM Open3D::3rdparty_tinyfil
 if(USE_SYSTEM_TINYGLTF)
     open3d_find_package_3rdparty_library(3rdparty_tinygltf
         PACKAGE TinyGLTF
-        TARGETS TinyGLTF::TinyGLTF
+        TARGETS tinygltf::tinygltf
     )
     if(NOT 3rdparty_tinygltf_FOUND)
         set(USE_SYSTEM_TINYGLTF OFF)
