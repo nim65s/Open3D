@@ -240,7 +240,7 @@ void FilamentCamera::LookAt(const Eigen::Vector3f& center,
 
 Eigen::Vector3f FilamentCamera::GetPosition() const {
     auto cam_pos = camera_->getPosition();
-    return {cam_pos.x, cam_pos.y, cam_pos.z};
+    return {static_cast<float>(cam_pos.x), static_cast<float>(cam_pos.y), static_cast<float>(cam_pos.z)};
 }
 
 Eigen::Vector3f FilamentCamera::GetForwardVector() const {
