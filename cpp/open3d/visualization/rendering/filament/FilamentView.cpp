@@ -385,8 +385,8 @@ void FilamentView::PreRender() {
             const auto n = camera_->GetNativeCamera()->getNear();
 
             FilamentMaterialModifier(selected_material, material_handle)
-                    .SetParameter("cameraNear", n)
-                    .SetParameter("cameraFar", f)
+                    .SetParameter("cameraNear", static_cast<float>(n))
+                    .SetParameter("cameraFar", static_cast<float>(f))
                     .Finish();
         }
     } else if (mode_ == Mode::Normals) {
