@@ -314,7 +314,7 @@ void FilamentCamera::SetModelMatrix(const Eigen::Vector3f& forward,
                                     const Eigen::Vector3f& up) {
     using namespace filament;
 
-    math::mat4f ftransform = camera_->getModelMatrix();
+    math::mat4f ftransform = (math::mat4f)camera_->getModelMatrix();
     ftransform[0].xyz = math::float3(left.x(), left.y(), left.z());
     ftransform[1].xyz = math::float3(up.x(), up.y(), up.z());
     ftransform[2].xyz = math::float3(forward.x(), forward.y(), forward.z());
