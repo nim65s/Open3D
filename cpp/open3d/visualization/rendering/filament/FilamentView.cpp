@@ -64,7 +64,7 @@ FilamentView::FilamentView(filament::Engine& engine,
     view_->setVisibleLayers(kAllLayersMask, kMainLayer);
     SetShadowing(true, ShadowType::kPCF);
     ColorGradingParams cp(ColorGradingParams::Quality::kHigh,
-                          ColorGradingParams::ToneMapping::kUchimura);
+                          ColorGradingParams::ToneMapping::kFilmic);
     SetColorGrading(cp);
 
     camera_ = std::make_unique<FilamentCamera>(engine_);
@@ -238,12 +238,6 @@ void FilamentView::SetColorGrading(const ColorGradingParams& color_grading) {
             break;
         case ColorGradingParams::ToneMapping::kFilmic:
             tm = filament::ColorGrading::ToneMapping::FILMIC;
-            break;
-        case ColorGradingParams::ToneMapping::kUchimura:
-            tm = filament::ColorGrading::ToneMapping::UCHIMURA;
-            break;
-        case ColorGradingParams::ToneMapping::kReinhard:
-            tm = filament::ColorGrading::ToneMapping::REINHARD;
             break;
         case ColorGradingParams::ToneMapping::kDisplayRange:
             tm = filament::ColorGrading::ToneMapping::DISPLAY_RANGE;
