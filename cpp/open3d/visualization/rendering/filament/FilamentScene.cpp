@@ -542,7 +542,9 @@ void FilamentScene::UpdateGeometry(const std::string& object_name,
         // Note: There should only be a single entry in geoms
         auto* g = geoms[0];
         auto vbuf_ptr = resource_mgr_.GetVertexBuffer(g->vb).lock();
+        auto ibuf_ptr = resource_mgr_.GetIndexBuffer(g->ib).lock();
         auto vbuf = vbuf_ptr.get();
+        auto ibuf = ibuf_ptr.get();
 
         const auto& points = point_cloud.GetPointPositions();
         const size_t n_vertices = points.GetLength();
@@ -663,7 +665,7 @@ void FilamentScene::UpdateGeometry(const std::string& object_name,
             auto inst = renderable_mgr.getInstance(g->filament_entity);
             renderable_mgr.setGeometryAt(
                     inst, 0, filament::RenderableManager::PrimitiveType::POINTS,
-                    0, n_vertices);
+                    vbuf, ibuf, 0, n_vertices);
         }
     }
 }
